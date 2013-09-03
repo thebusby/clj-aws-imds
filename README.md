@@ -1,4 +1,4 @@
-Available via [clojars](http://clojars.org/search?q=clj-aws-imds)
+Available via [clojars](http://clojars.org/search?q=clj-aws-imds)    
 Current stable version: [clj-aws-imds "1.0.1"]
 
 
@@ -68,7 +68,5 @@ With Maven:
 
 MIT
 http://opensource.org/licenses/MIT
-
-I'd also like to thank my employer Gracenote, for allowing me to release this.
 
 Copyright (C) 2013 Alan Busby
