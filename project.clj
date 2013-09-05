@@ -1,4 +1,4 @@
-(defproject clj-aws-imds "1.0.1"
+(defproject clj-aws-imds "1.0.2"
   :description "Clojure AWS IMDS library."
   :url "https://github.com/thebusby/clj-aws-imds"
   :license {:name "MIT"

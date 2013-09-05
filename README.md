@@ -1,5 +1,5 @@
-Available via [clojars](http://clojars.org/search?q=clj-aws-imds)    
-Current stable version: [clj-aws-imds "1.0.1"]
+Available via [clojars](https://clojars.org/clj-aws-imds)    
+Current stable version: [clj-aws-imds "1.0.2"]
 
 
 # clj-aws-imds
@@ -52,15 +52,15 @@ If you are using Maven, add the following repository definition to your `pom.xml
 
 With Leiningen:
 
-    [clj-aws-imds "1.0.1"]
+    [clj-aws-imds "1.0.2"]
 
 
 With Maven:
 
     <dependency>
-      <groupId>bagotricks</groupId>
+      <groupId>clj-aws-imds</groupId>
       <artifactId>clj-aws-imds</artifactId>
-      <version>1.0.1</version>
+      <version>1.0.2</version>
     </dependency>
 
 

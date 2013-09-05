@@ -15,60 +15,64 @@
   "Return the IMDS data for a given path, 
    otherwise nil if FileNotFound."
   (try
-    (slurp (get-imds-url path))
+    (let [resp (slurp (get-imds-url path))] 
+      (if (and resp (not (.isEmpty resp)))
+        resp
+        nil))
     (catch java.io.FileNotFoundException e nil)))
 
 (defn get-user-data []
-  "Return the instance's user-data"
+  "Return the instance's user-data, otherwise nil"
   (get-imds-by-path "user-data"))
 
 (defn get-instance-id []
-  "Return the instance's instance-id"
+  "Return the instance's instance-id, otherwise nil"
   (get-imds-by-path "meta-data/instance-id"))
 
 (defn get-instance-type []
-  "Return the instance's type"
+  "Return the instance's type, otherwise nil"
   (get-imds-by-path "meta-data/instance-type"))
 
 (defn get-ami-id []
-  "Return the instance's ami-id"
+  "Return the instance's ami-id, otherwise nil"
   (get-imds-by-path "meta-data/ami-id"))
 
 (defn get-ami-launch-index []
-  "Return the instance's AMI launch index"
+  "Return the instance's AMI launch index, otherwise nil"
   (if-let [id (get-imds-by-path "meta-data/ami-launch-index")]
     (Long/parseLong id)))
 
 (defn get-public-ip []
-  "Return the instance's public IP address."
+  "Return the instance's public IP address, otherwise nil"
   (get-imds-by-path "meta-data/public-ipv4"))
 
 (defn get-public-hostname []
-  "Return the instance's public hostname"
+  "Return the instance's public hostname, otherwise nil"
   (get-imds-by-path "meta-data/public-hostname"))
 
 (defn get-local-ip []
-  "Return the instance's local IP address."
+  "Return the instance's local IP address, otherwise nil"
   (get-imds-by-path "meta-data/local-ipv4"))
 
 (defn get-local-hostname []
-  "Return the instance's local hostname."
+  "Return the instance's local hostname, otherwise nil"
   (get-imds-by-path "meta-data/local-hostname"))
 
 (defn get-mac []
-  "Return the instance's MAC address."
+  "Return the instance's MAC address, otherwise nil"
   (get-imds-by-path "meta-data/mac"))
 
 (defn get-az []
-  "Return the instance's availability zone."
+  "Return the instance's availability zone, otherwise nil"
   (get-imds-by-path "meta-data/placement/availability-zone"))
 
 (defn get-security-groups []
-  "Return the instance's security groups"
+  "Return the instance's security groups, otherwise nil"
   (get-imds-by-path "meta-data/security-groups"))
 
 (defn get-all []
-  "Return a Clojure map containing most of the core IMDS data."
+  "Return a Clojure map containing most of the core IMDS data.
+   If a field isn't defined, or is empty, it'll be stored as nil."
   {:user-data (get-user-data)
    :instance-id (get-instance-id)
    :instance-type (get-instance-type)
